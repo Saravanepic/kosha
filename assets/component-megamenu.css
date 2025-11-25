@@ -357,8 +357,8 @@
         padding-top: 0;
         /* padding-left: var(--grid_gap_menu_item);
         padding-right: var(--grid_gap_menu_item); */
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
         padding-bottom: var(--menu_bottom_spacing);
         color: var(--lv_1_color);
     }

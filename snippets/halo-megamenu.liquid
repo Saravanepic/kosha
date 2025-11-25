@@ -35,7 +35,24 @@
                                 <div class="site-nav dropdown{% if show_label_blink %} menu-lv-blink{% endif %}" data-gridItem>
                                     <div class="site-nav-list">
                                         <a href="{{ childlink.url }}" class="site-nav-title{% if childlink.links != blank %} menu_mobile_link_2{% endif %}{% if sale_item_lv2 contains childtitle %} active-sale{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
-                                            <span class="text{% if childlink.current %} site-nav-active{% endif %}">{{ childlink.title | escape }}</span>
+                                            
+                                            {% comment %} <span class="text{% if childlink.current %} site-nav-active{% endif %}">{{ childlink.title | escape }}</span> {% endcomment %}
+
+                                             {% if childlink.title contains '-' %}
+                                                                    {% assign split_content = childlink.title | split: ' - ' %}
+                                                                    {% assign image_url = split_content[0] | strip %}
+                                                                    {% assign link_text = split_content[1] | strip %}
+                                                                    <span class="has_image text{% if childlink.current %} site-nav-active{% endif %} p-relative">
+                                                                        <img src="{{ image_url }}" alt="{{ link_text }}" class="menu-image" width="" height="">
+                                                                        {{ link_text | escape }}
+                                                                    </span>
+                                                                    
+                                                                {% else %}
+                                                                    <span class="text{% if childlink.current %} site-nav-active{% endif %} p-relative">
+                                                                        {{ childlink.title | escape }}
+                                                                    </span>
+                                                                {% endif %}
+
                                             {%- if childlink.links != blank -%}
                                             <span class="icon-dropdown" data-toggle-menu-mb="">{% render 'icon-caret-right' %}</span>
                                             {%- endif -%}

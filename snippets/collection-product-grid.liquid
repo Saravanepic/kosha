@@ -76,6 +76,14 @@
     @media (max-width: 1024px) {#CollectionSection-{{ section.id }}{padding-top: {{ padding_top_tablet }};padding-bottom: {{ padding_bottom_tablet }}}}
     @media (max-width: 550px) {#CollectionSection-{{ section.id }}{padding-top: {{ padding_top_mobile }};padding-bottom: {{ padding_bottom_mobile }}}}
 </style>
+
+{% assign  main_collection = collection.metafields.custom.main_collection %}
+
+
+{% if main_collection %}
+
+{% else %}    
+
 <div data-section-id="{{ section.id }}" data-section-type="collection" id="CollectionSection-{{ section.id }}" data-section="{{ section.id }}" class="collection-default">
     {%- if settings.layout != '4' or sidebar_type != 'horizontal' -%}
         <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
@@ -233,3 +241,6 @@
         <div class="loading-overlay__spinner" aria-label="{{ 'general.button_load_more.loading' | t }}"><svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div>
     </div>
 </div>
+
+{% endif %}    
+

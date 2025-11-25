@@ -33,7 +33,11 @@
 
     .footer-block__list-social .list-social__link {color: {{ social_color }} !important;background: {% if social_background_color_gradient != blank %}{{ social_background_color_gradient }}{% else %}{{ social_background_color }}{% endif %};border: {{ social_icon_border_width | append: 'px' }} solid {{ social_border_color }};padding: {{ social_icon_padding | append: 'px' }}}
 
-    .footer-block__list-social .list-social__link svg {fill: {{ social_color }} !important;width: {{ social_icon_width | append: 'px' }} !important;height: {{ social_icon_width | append: 'px' }} !important}
+    .footer-block__list-social .list-social__link svg {
+        {% comment %} fill: {{ social_color }} !important; {% endcomment %}
+        width: {{ social_icon_width | append: 'px' }} !important;
+        height: {{ social_icon_width | append: 'px' }} !important
+    }
 {%- if social_border_color == 'rgba(0,0,0,0)' or social_border_color == blank -%}
     .footer-block__list-social .list-social {margin-left: -13px}
     .layout_rtl .footer-block__list-social .list-social {margin-right: -13px;margin-left: 0px}
