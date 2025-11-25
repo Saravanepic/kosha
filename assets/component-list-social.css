@@ -25,7 +25,8 @@
 .list-social__link .icon{
     width: 18px;
     height: 18px;
-    fill: var(--color-text);
+    /* fill: var(--color-text); */
+    fill:var(--bg-white);
 }
 
 .list-social__link.color-white{

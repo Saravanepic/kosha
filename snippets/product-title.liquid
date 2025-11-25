@@ -8,6 +8,72 @@
         <h1 class="productView-title" style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};"><span>{{ product.title | escape }}</span></h1>
         {% render 'halo-share', product: product, share_layout: check_show_share %}
     </div>
+    {% comment %}  {% endcomment %}
+
+    {%  if template.name == "product" %}
+    <div class="usp_list">
+        {%- assign linked_metaobjects = product.metafields.custom.usp_points.value -%}
+        {% if linked_metaobjects %}
+        <div class="linked-metaobjects">
+            {% for metaobject in linked_metaobjects %}
+            <div class="linked-item">
+                
+                {% if metaobject.image %}
+                <img src="{{ metaobject.image | image_url: master }}"
+                    alt="{{ metaobject.name }}"
+                    width="300"
+                    height="auto"
+                    loading="lazy">
+                {% endif %}
+                {% if metaobject.name %}
+                <h4>{{ metaobject.name }}</h4>
+                {% endif %}
+
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <style>
+        .linked-metaobjects {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            text-align: center;
+            align-items: center;
+            margin: 20px 0 0;
+        }
+
+        .linked-item h4 {
+               margin: 10px 0 0;
+            font-weight: 400;
+            min-height: 44px;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .linked-item img {
+            max-width: 80px;
+            max-height: 80px;
+            object-fit: cover;
+            margin: auto;
+        }
+
+        @media all and (max-width:767px){
+            .linked-metaobjects {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .linked-metaobjects .linked-item {
+                width: 30%;
+            }
+        }
+    </style>
+    {% endif %}
+
+    {% comment %}  {% endcomment %}
 {%- else -%}
     <h1 class="productView-title" style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};"><span>{{ product.title | escape }}</span></h1>
 {%- endif -%}

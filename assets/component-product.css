@@ -1875,6 +1875,9 @@
 .productView-payment .shopify-payment-button .shopify-payment-button__button--unbranded {
   padding-top: 13px !important;
   padding-bottom: 13px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .productView-payment .shopify-payment-button div[role="button"] {
   padding-top: 14px !important;
